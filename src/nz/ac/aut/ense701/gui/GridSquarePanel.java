@@ -50,11 +50,17 @@ public class GridSquarePanel extends javax.swing.JPanel
             case WATER    : color = Color.CYAN;   break;
             default  : color = Color.LIGHT_GRAY; break;
         }
-        
+     
+       /* The below code allows an image to be set at a fixed position,
+          the image is only visiable when the player is on the grid refernce
+        that has the image
+        */
         if ( squareExplored || squareVisible )
         {
             // Set the text of the JLabel according to the occupant
             lblText.setText(game.getOccupantStringRepresentation(row,column));
+            
+            // Checks if the sqaue is expolored then sets the icon
             if(squareExplored && row == 5  && column == 4) {
                 lblText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/apple2_1.png")));  // URL 
             }
