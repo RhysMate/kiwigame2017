@@ -281,7 +281,7 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnMoveNorth">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="N"/>
+                    <Property name="text" type="java.lang.String" value="North [W]"/>
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -295,7 +295,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMoveSouth">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="S"/>
+                    <Property name="text" type="java.lang.String" value="South [S]"/>
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -309,7 +309,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMoveEast">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="E"/>
+                    <Property name="text" type="java.lang.String" value="East [D]"/>
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -323,7 +323,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMoveWest">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="W"/>
+                    <Property name="text" type="java.lang.String" value="West [A]"/>
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -391,7 +391,7 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnDrop">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Drop"/>
+                    <Property name="text" type="java.lang.String" value="Drop [M]"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDropActionPerformed"/>
@@ -404,7 +404,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnUse">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Use"/>
+                    <Property name="text" type="java.lang.String" value="Use [V]"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUseActionPerformed"/>
@@ -469,7 +469,7 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnCollect">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Collect"/>
+                    <Property name="text" type="java.lang.String" value="Collect [B]"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[61, 23]"/>
@@ -492,7 +492,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCount">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Count"/>
+                    <Property name="text" type="java.lang.String" value="Count [N]"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCountActionPerformed"/>
