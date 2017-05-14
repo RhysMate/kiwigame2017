@@ -189,11 +189,8 @@ public class Game
      * Get occupants for player's position
      * @return occupants at player's position
      */
-    public Occupant[] getOccupantsPlayerPosition()
-    {
-        return island.getOccupants(player.getPosition());
-    }
     
+   
     /**
      * Get string for occupants of this position
      * @param row
@@ -210,6 +207,16 @@ public class Game
     }
     
     /**
+     * Get Name string for occupants of this position
+ -   * @param row
+ -   * @param column
+ -   * @return occupant string for this position row, column
+ -   */
+    public String getOccupantName(int row, int column) {
+        return island.getOccupantName(new Position(island, row, column));
+    }
+     
+     /**
      * Get values from player for GUI display
      * @return player values related to stamina and backpack.
      */
@@ -887,9 +894,4 @@ public class Game
     private String winMessage = "";
     private String loseMessage  = "";
     private String playerMessage  = "";  
-
-    public Object getOccupantName(int row, int column) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
