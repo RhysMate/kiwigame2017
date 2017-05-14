@@ -2,15 +2,7 @@ package nz.ac.aut.ense701.gui;
 
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gameModel.GameEventListener;
 import nz.ac.aut.ense701.gameModel.GameState;
@@ -27,21 +19,7 @@ public class KiwiCountUI
     extends javax.swing.JFrame 
     implements GameEventListener
 {
-    public static void addKeyBinding(JComponent comp, int keyCode, String id, ActionListener actionListener){
-        InputMap im = comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap ap = comp.getActionMap();
-        
-        im.put(KeyStroke.getKeyStroke(keyCode, 0, false),
-                            id); 
-        
-        ap.put(id, new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                actionListener.actionPerformed(e);
-            }
-        });
-    }
-    
+
     /**
      * Creates a GUI for the KiwiIsland game.
      * @param game the game object to represent with this GUI.
@@ -54,30 +32,6 @@ public class KiwiCountUI
         initComponents();
         initIslandGrid();
         update();
-        addKeyBinding(btnMoveNorth, KeyEvent.VK_W, "North", (evt) -> {
-           game.playerMove(MoveDirection.NORTH);
-        });
-        addKeyBinding(btnMoveSouth, KeyEvent.VK_S, "South", (evt) -> {
-           game.playerMove(MoveDirection.SOUTH);
-        });
-        addKeyBinding(btnMoveNorth, KeyEvent.VK_A, "West", (evt) -> {
-           game.playerMove(MoveDirection.WEST);
-        });
-        addKeyBinding(btnMoveSouth, KeyEvent.VK_D, "East", (evt) -> {
-           game.playerMove(MoveDirection.EAST);
-        });
-        addKeyBinding(btnMoveSouth, KeyEvent.VK_B, "Collect", (evt) -> {
-           btnCollectActionPerformed(evt);
-        });
-        addKeyBinding(btnMoveNorth, KeyEvent.VK_V, "Use", (evt) -> {
-           btnUseActionPerformed(evt);
-        });
-        addKeyBinding(btnMoveSouth, KeyEvent.VK_N, "Count", (evt) -> {
-           btnCountActionPerformed(evt);
-        });
-        addKeyBinding(btnMoveSouth, KeyEvent.VK_M, "Drop", (evt) -> {
-           btnDropActionPerformed(evt);
-        });
     }
     
     /**
@@ -96,17 +50,7 @@ public class KiwiCountUI
                     this, 
                     game.getLoseMessage(), "Game over!",
                     JOptionPane.INFORMATION_MESSAGE);
-            //game.createNewGame("IslandData.txt");
-            if(game.fileName == "IslandData.txt") {
-                game.createNewGame("IslandData2.txt");
-                initIslandGrid();
-                update();  
-            }
-            else  {
-                game.createNewGame("IslandData3.txt");
-                initIslandGrid();
-                update();  
-            }
+            game.createNewGame();
         }
         else if ( game.getState() == GameState.WON )
         {
@@ -114,16 +58,7 @@ public class KiwiCountUI
                     this, 
                     game.getWinMessage(), "Well Done!",
                     JOptionPane.INFORMATION_MESSAGE);
-            if(game.fileName == "IslandData.txt") {
-                game.createNewGame("IslandData2.txt");
-                initIslandGrid();
-                update();  
-            }
-            else  {
-                game.createNewGame("IslandData3.txt");
-                initIslandGrid();
-                update();  
-            }
+            game.createNewGame();
         }
         else if (game.messageForPlayer())
         {
@@ -153,6 +88,7 @@ public class KiwiCountUI
             GridSquarePanel gsp = (GridSquarePanel) c;
             gsp.update();
         }
+        
         // update player information
         int[] playerValues = game.getPlayerValues();
         txtPlayerName.setText(game.getPlayerName());
@@ -169,19 +105,17 @@ public class KiwiCountUI
         
         // update inventory list
         listInventory.setListData(game.getPlayerInventory());
-        listInventory.setSelectedIndex(0);
+        listInventory.clearSelection();
         listInventory.setToolTipText(null);
         btnUse.setEnabled(false);
         btnDrop.setEnabled(false);
         
         // update list of visible objects
         listObjects.setListData(game.getOccupantsPlayerPosition());
-        listObjects.setSelectedIndex(0);
+        listObjects.clearSelection();
         listObjects.setToolTipText(null);
         btnCollect.setEnabled(false);
         btnCount.setEnabled(false);
-        listObjectsValueChanged(null);
-        listInventoryValueChanged(null);
         
         // update movement buttons
         btnMoveNorth.setEnabled(game.isPlayerMovePossible(MoveDirection.NORTH));
@@ -372,7 +306,7 @@ public class KiwiCountUI
         pnlMovement.setBorder(javax.swing.BorderFactory.createTitledBorder("Movement"));
         pnlMovement.setLayout(new java.awt.GridBagLayout());
 
-        btnMoveNorth.setText("North [W]");
+        btnMoveNorth.setText("N");
         btnMoveNorth.setFocusable(false);
         btnMoveNorth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,7 +322,7 @@ public class KiwiCountUI
         gridBagConstraints.weighty = 1.0;
         pnlMovement.add(btnMoveNorth, gridBagConstraints);
 
-        btnMoveSouth.setText("South [S]");
+        btnMoveSouth.setText("S");
         btnMoveSouth.setFocusable(false);
         btnMoveSouth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,7 +338,7 @@ public class KiwiCountUI
         gridBagConstraints.weighty = 1.0;
         pnlMovement.add(btnMoveSouth, gridBagConstraints);
 
-        btnMoveEast.setText("East [D]");
+        btnMoveEast.setText("E");
         btnMoveEast.setFocusable(false);
         btnMoveEast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,7 +354,7 @@ public class KiwiCountUI
         gridBagConstraints.weighty = 1.0;
         pnlMovement.add(btnMoveEast, gridBagConstraints);
 
-        btnMoveWest.setText("West [A]");
+        btnMoveWest.setText("W");
         btnMoveWest.setFocusable(false);
         btnMoveWest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -471,7 +405,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlInventory.add(scrlInventory, gridBagConstraints);
 
-        btnDrop.setText("Drop [M]");
+        btnDrop.setText("Drop");
         btnDrop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDropActionPerformed(evt);
@@ -487,7 +421,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlInventory.add(btnDrop, gridBagConstraints);
 
-        btnUse.setText("Use [V]");
+        btnUse.setText("Use");
         btnUse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUseActionPerformed(evt);
@@ -542,7 +476,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlObjects.add(scrlObjects, gridBagConstraints);
 
-        btnCollect.setText("Collect [B]");
+        btnCollect.setText("Collect");
         btnCollect.setToolTipText("");
         btnCollect.setMaximumSize(new java.awt.Dimension(61, 23));
         btnCollect.setMinimumSize(new java.awt.Dimension(61, 23));
@@ -562,7 +496,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlObjects.add(btnCollect, gridBagConstraints);
 
-        btnCount.setText("Count [N]");
+        btnCount.setText("Count");
         btnCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCountActionPerformed(evt);
@@ -651,7 +585,6 @@ public class KiwiCountUI
      */
     private void initIslandGrid()
     {
-        pnlIsland.removeAll();
         // Add the grid
         int rows    = game.getNumRows();
         int columns = game.getNumColumns();

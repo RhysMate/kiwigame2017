@@ -1,7 +1,6 @@
 package nz.ac.aut.ense701.gui;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import nz.ac.aut.ense701.gameModel.Game;
@@ -41,85 +40,30 @@ public class GridSquarePanel extends javax.swing.JPanel
         boolean squareExplored = game.isExplored(row, column);
         
         Color      color;
-        ImageIcon image;
         
         switch ( terrain )
         {
-            case SAND     : image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/sand.png")); break;
-            case FOREST   : image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/forest.png")); break;
-            case WETLAND : image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/desert.png")); break;
-            case SCRUB : image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/bush.png")); break;
-            case WATER    : image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/water.png")); break;
-            default  : image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/sand.png")); break;
+            case SAND     : color = Color.YELLOW; break;
+            case FOREST   : color = Color.GREEN;  break;
+            case WETLAND : color = Color.BLUE; break;
+            case SCRUB : color = Color.DARK_GRAY;   break;
+            case WATER    : color = Color.CYAN;   break;
+            default  : color = Color.LIGHT_GRAY; break;
         }
+        
         if ( squareExplored || squareVisible )
         {
             // Set the text of the JLabel according to the occupant
             lblText.setText(game.getOccupantStringRepresentation(row,column));
-           
-            
-            if (game.getOccupantName(row, column).contains("Apple")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/apple2_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Burger")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/burger_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Juice")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/juice_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Crab")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/crab.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Kiwi")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/kiwi_2.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Kiore")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/kiore_rat_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Possum")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/possum_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Screwdriver")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/screwdriver_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Stoat")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/stoat_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-            else if (game.getOccupantName(row, column).contains("Rat")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/kiore_rat_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL 
-            }
-            else if (game.getOccupantName(row, column).contains("Cat")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/cat_1.png"));
-                lblText.setText("");
-                setVisible(true);// URL
-            }
-
             // Set the colour. 
             if ( squareVisible && !squareExplored ) 
             {
-               
+                // When explored the colour is brighter
+                color = new Color(Math.min(255, color.getRed()   + 128), 
+                                  Math.min(255, color.getGreen() + 128), 
+                                  Math.min(255, color.getBlue()  + 128));
             }
-            lblText.setIcon(image);
+            lblText.setBackground(color);
             // set border colour according to 
             // whether the player is in the grid square or not
             setBorder(game.hasPlayer(row,column) ? activeBorder : normalBorder);
@@ -127,8 +71,7 @@ public class GridSquarePanel extends javax.swing.JPanel
         else
         {
             lblText.setText("");
-            lblText.setIcon(null);
-            lblText.setBackground(Color.LIGHT_GRAY);
+            lblText.setBackground(null);
             setBorder(normalBorder);
         }
     }
@@ -160,6 +103,6 @@ public class GridSquarePanel extends javax.swing.JPanel
     private Game game;
     private int row, column;
     
-    private static final Border normalBorder = new LineBorder(Color.BLACK, 0);
+    private static final Border normalBorder = new LineBorder(Color.BLACK, 1);
     private static final Border activeBorder = new LineBorder(Color.RED, 3);
 }
