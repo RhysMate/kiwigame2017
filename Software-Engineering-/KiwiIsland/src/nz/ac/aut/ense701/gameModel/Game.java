@@ -35,7 +35,7 @@ public class Game
     {   
         eventListeners = new HashSet<GameEventListener>();
 
-        createNewGame();
+        createNewGame("IslandData.txt");
     }
     
     
@@ -43,18 +43,19 @@ public class Game
      * Starts a new game.
      * At this stage data is being read from a text file
      */
-    public void createNewGame()
+    public void createNewGame(String fileName)
     {
         totalPredators = 0;
         totalKiwis = 0;
         predatorsTrapped = 0;
         kiwiCount = 0;
-        initialiseIslandFromFile("IslandData.txt");
+        initialiseIslandFromFile(fileName);
         drawIsland();
         state = GameState.PLAYING;
         winMessage = "";
         loseMessage = "";
         playerMessage = "";
+        this.fileName = fileName;
         notifyGameEventListeners();
     }
 
@@ -857,6 +858,7 @@ public class Game
     private int totalPredators;
     private int totalKiwis;
     private int predatorsTrapped;
+    public String fileName;
     private Set<GameEventListener> eventListeners;
     
     private final double MIN_REQUIRED_CATCH = 0.8;

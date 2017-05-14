@@ -96,7 +96,17 @@ public class KiwiCountUI
                     this, 
                     game.getLoseMessage(), "Game over!",
                     JOptionPane.INFORMATION_MESSAGE);
-            game.createNewGame();
+            //game.createNewGame("IslandData.txt");
+            if(game.fileName == "IslandData.txt") {
+                game.createNewGame("IslandData2.txt");
+                initIslandGrid();
+                update();  
+            }
+            else  {
+                game.createNewGame("IslandData3.txt");
+                initIslandGrid();
+                update();  
+            }
         }
         else if ( game.getState() == GameState.WON )
         {
@@ -104,7 +114,16 @@ public class KiwiCountUI
                     this, 
                     game.getWinMessage(), "Well Done!",
                     JOptionPane.INFORMATION_MESSAGE);
-            game.createNewGame();
+            if(game.fileName == "IslandData.txt") {
+                game.createNewGame("IslandData2.txt");
+                initIslandGrid();
+                update();  
+            }
+            else  {
+                game.createNewGame("IslandData3.txt");
+                initIslandGrid();
+                update();  
+            }
         }
         else if (game.messageForPlayer())
         {
@@ -632,6 +651,7 @@ public class KiwiCountUI
      */
     private void initIslandGrid()
     {
+        pnlIsland.removeAll();
         // Add the grid
         int rows    = game.getNumRows();
         int columns = game.getNumColumns();
