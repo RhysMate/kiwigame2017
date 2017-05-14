@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
 
+
 /**
  * This is the class that knows the Kiwi Island game rules and state
  * and enforces those rules.
@@ -27,15 +28,23 @@ public class Game
     public static final int WEIGHT_INDEX = 3;
     public static final int MAXSIZE_INDEX = 4;
     public static final int SIZE_INDEX = 5;
+    private String playername;
+    private PlayBGM bgm;
+    private Sound sound;
     
     /**
      * A new instance of Kiwi island that reads data from "IslandData.txt".
      */
-    public Game() 
+    public Game(String playername) 
     {   
+        this.playername = playername;
         eventListeners = new HashSet<GameEventListener>();
 
-        createNewGame();
+        createNewGame("IslandData.txt");
+        
+        bgm = new PlayBGM();
+        Thread th = new Thread(bgm);
+        th.start();
     }
     
     
@@ -43,18 +52,19 @@ public class Game
      * Starts a new game.
      * At this stage data is being read from a text file
      */
-    public void createNewGame()
+    public void createNewGame(String fileName)
     {
         totalPredators = 0;
         totalKiwis = 0;
         predatorsTrapped = 0;
         kiwiCount = 0;
-        initialiseIslandFromFile("IslandData.txt");
+        initialiseIslandFromFile(fileName);
         drawIsland();
         state = GameState.PLAYING;
         winMessage = "";
         loseMessage = "";
         playerMessage = "";
+        this.fileName = fileName;
         notifyGameEventListeners();
     }
 
@@ -175,6 +185,10 @@ public class Game
      */
     public Occupant[] getOccupantsPlayerPosition()
     {
+        if(island.hasPredator(player.getPosition())==true){
+            sound = new Sound("woop.wav");
+            sound.start();
+        }
         return island.getOccupants(player.getPosition());
     }
     
@@ -249,7 +263,7 @@ public class Game
      */
     public String getPlayerName()
     {
-        return player.getName();
+        return playername;
     }
 
     /**
@@ -353,6 +367,9 @@ public class Game
      */
     public String getWinMessage()
     {
+        sound = new Sound("win.wav");
+        sound.start();
+        
         return winMessage;
     }
     
@@ -362,6 +379,8 @@ public class Game
      */
     public String getLoseMessage()
     {
+        sound = new Sound("death.wav");
+        sound.start();
         return loseMessage;
     }
     
@@ -454,6 +473,8 @@ public class Game
         //Player east food to increase stamina
         {
             Food food = (Food) item;
+            sound = new Sound("ate.wav");
+            sound.start();
             // player gets energy boost from food
             player.increaseStamina(food.getEnergy());
             // player has consumed the food: remove from inventory
@@ -857,6 +878,7 @@ public class Game
     private int totalPredators;
     private int totalKiwis;
     private int predatorsTrapped;
+    public String fileName;
     private Set<GameEventListener> eventListeners;
     
     private final double MIN_REQUIRED_CATCH = 0.8;
