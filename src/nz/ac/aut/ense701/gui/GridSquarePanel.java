@@ -77,15 +77,15 @@ public class GridSquarePanel extends javax.swing.JPanel
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Burger")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/burger_1.jpg"));
+                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/burger_1.png"));
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Juice")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/juice_1.jpg"));
+                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/juice_1.png"));
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Crab")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/crab.jpg"));
+                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/crab.png"));
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Kiwi")){
@@ -97,7 +97,7 @@ public class GridSquarePanel extends javax.swing.JPanel
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Possum")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/possum_1.gif"));
+                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/possum_1.png"));
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Screwdriver")){
@@ -105,15 +105,15 @@ public class GridSquarePanel extends javax.swing.JPanel
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Stoat")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/stoat_1.jpg"));
+                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/stoat_1.png"));
                 setVisible(true);// URL
             }
             else if (game.getOccupantName(row, column).contains("Rat")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/rat_1.png"));
+                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/kiore_rat_1.png"));
                 setVisible(true);// URL 
             }
             else if (game.getOccupantName(row, column).contains("Cat")){
-                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/cat_1.gif"));
+                image = new ImageIcon(getClass().getResource("/nz/ac/aut/ense701/images/cat_1.png"));
                 setVisible(true);// URL
             }
 
