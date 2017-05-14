@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import nz.ac.aut.ense701.gui.UserNameGUI;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state
@@ -27,15 +30,16 @@ public class Game
     public static final int WEIGHT_INDEX = 3;
     public static final int MAXSIZE_INDEX = 4;
     public static final int SIZE_INDEX = 5;
-    private String playername;
-    private Sound sound;
-    private PlayBGM bgm;
+    public String playername;
+    public UserNameGUI ung;
+    public Sound sound;
+    public PlayBGM bgm;
     
     /**
      * A new instance of Kiwi island that reads data from "IslandData.txt".
      */
-    public Game(String playername)
-    {   
+    public Game(String playername) 
+    {  
         this.playername = playername;
         eventListeners = new HashSet<GameEventListener>();
 
@@ -44,6 +48,10 @@ public class Game
         bgm = new PlayBGM();
         Thread th = new Thread(bgm);
         th.start();
+    }
+
+    Game() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
@@ -193,7 +201,7 @@ public class Game
      * @return occupant string for this position row, column
      */
     public String getOccupantStringRepresentation(int row, int column) {
-         if(island.hasPredator(player.getPosition()))
+        if(island.hasPredator(player.getPosition()))
         {
             Sound predator = new Sound("woop.wav");
             predator.start();
@@ -656,7 +664,7 @@ public class Game
             Occupant occupant = island.getPredator(current);
             //Predator has been trapped so remove
             island.removeOccupant(current, occupant); 
-            predatorsTrapped++;
+            predatorsTrapped++;   
         }
         
         return hadPredator;
@@ -795,18 +803,20 @@ public class Game
      */
     private void setUpPlayer(Scanner input) 
     {
-        String playerName              = input.next();
-        int    playerPosRow            = input.nextInt();
-        int    playerPosCol            = input.nextInt();
-        double playerMaxStamina        = input.nextDouble();
-        double playerMaxBackpackWeight = input.nextDouble();
-        double playerMaxBackpackSize   = input.nextDouble();
         
-        Position pos = new Position(island, playerPosRow, playerPosCol);
-        player = new Player(pos, playerName, 
-                playerMaxStamina, 
-                playerMaxBackpackWeight, playerMaxBackpackSize);
-        island.updatePlayerPosition(player);
+            String playerName              = input.next();
+            int    playerPosRow            = input.nextInt();
+            int    playerPosCol            = input.nextInt();
+            double playerMaxStamina        = input.nextDouble();
+            double playerMaxBackpackWeight = input.nextDouble();
+            double playerMaxBackpackSize   = input.nextDouble();
+
+            Position pos = new Position(island, playerPosRow, playerPosCol);
+            player = new Player(pos, playerName, 
+                    playerMaxStamina, 
+                    playerMaxBackpackWeight, playerMaxBackpackSize);
+            island.updatePlayerPosition(player);
+        
     }
 
     /**
@@ -876,10 +886,10 @@ public class Game
         
     private String winMessage = "";
     private String loseMessage  = "";
-    private String playerMessage  = "";   
+    private String playerMessage  = "";  
 
-    
-
-
+    public Object getOccupantName(int row, int column) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
