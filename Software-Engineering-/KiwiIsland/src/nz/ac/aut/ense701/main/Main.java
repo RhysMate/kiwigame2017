@@ -1,5 +1,8 @@
 package nz.ac.aut.ense701.main;
 
+
+
+
 import java.util.Scanner;
 import nz.ac.aut.ense701.gameModel.Game;
 import nz.ac.aut.ense701.gui.KiwiCountUI;
@@ -19,9 +22,9 @@ public class Main
      */
     public static void main(String[] args) 
     {
-        System.out.println("Please Enter Your Name");
-        Scanner sc = new Scanner(System.in);
-        String playername = sc.nextLine();
+        System.out.println("Please Enter Your Name: ");
+        Scanner scanner = new Scanner(System.in);
+        String  playername = scanner.nextLine();
         // create the game object
         final Game game = new Game(playername);
         // create the GUI for the game

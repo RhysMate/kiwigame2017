@@ -28,18 +28,18 @@ public class Game
     public static final int MAXSIZE_INDEX = 4;
     public static final int SIZE_INDEX = 5;
     private String playername;
-    private Sound sound;
     private PlayBGM bgm;
+    private Sound sound;
     
     /**
      * A new instance of Kiwi island that reads data from "IslandData.txt".
      */
-    public Game(String playername)
+    public Game(String playername)       
     {   
         this.playername = playername;
         eventListeners = new HashSet<GameEventListener>();
 
-        createNewGame();
+        createNewGame("IslandData.txt");
         
         bgm = new PlayBGM();
         Thread th = new Thread(bgm);
@@ -51,18 +51,19 @@ public class Game
      * Starts a new game.
      * At this stage data is being read from a text file
      */
-    public void createNewGame()
+    public void createNewGame(String fileName)
     {
         totalPredators = 0;
         totalKiwis = 0;
         predatorsTrapped = 0;
         kiwiCount = 0;
-        initialiseIslandFromFile("IslandData.txt");
+        initialiseIslandFromFile(fileName);
         drawIsland();
         state = GameState.PLAYING;
         winMessage = "";
         loseMessage = "";
         playerMessage = "";
+        this.fileName = fileName;
         notifyGameEventListeners();
     }
 
@@ -193,12 +194,22 @@ public class Game
      * @return occupant string for this position row, column
      */
     public String getOccupantStringRepresentation(int row, int column) {
-         if(island.hasPredator(player.getPosition()))
+        if(island.hasPredator(player.getPosition()))
         {
             Sound predator = new Sound("woop.wav");
             predator.start();
         }
         return island.getOccupantStringRepresentation(new Position(island, row, column));
+    }
+    
+    /**
+     * Get Name string for occupants of this position
+     * @param row
+     * @param column
+     * @return occupant string for this position row, column
+     */
+    public String getOccupantName(int row, int column) {
+        return island.getOccupantName(new Position(island, row, column));
     }
     
     /**
@@ -870,6 +881,7 @@ public class Game
     private int totalPredators;
     private int totalKiwis;
     private int predatorsTrapped;
+    public String fileName;
     private Set<GameEventListener> eventListeners;
     
     private final double MIN_REQUIRED_CATCH = 0.8;
