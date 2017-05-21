@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
+import nz.ac.aut.ense701.gui.UserNameGUI;
 
 
 /**
@@ -35,9 +36,10 @@ public class Game
     /**
      * A new instance of Kiwi island that reads data from "IslandData.txt".
      */
-    public Game(String playername) 
+    public Game() 
     {   
-        this.playername = playername;
+        
+//        this.playername = playername;
         eventListeners = new HashSet<GameEventListener>();
 
         createNewGame("IslandData.txt");
@@ -263,9 +265,12 @@ public class Game
      */
     public String getPlayerName()
     {
+//        UserNameGUI ung = new UserNameGUI();
         return playername;
     }
-
+    public void setPlayerName(String name){
+        playername = name;
+    }
     /**
      * Is player in this position?
      * @param row

@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import nz.ac.aut.ense701.gameModel.Game;
@@ -23,10 +24,9 @@ import nz.ac.aut.ense701.gameModel.MoveDirection;
  * @version July 2011
  */
 
-public class KiwiCountUI 
-    extends javax.swing.JFrame 
-    implements GameEventListener
+public class KiwiCountUI extends JFrame implements GameEventListener
 {
+    
     public static void addKeyBinding(JComponent comp, int keyCode, String id, ActionListener actionListener){
         InputMap im = comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap ap = comp.getActionMap();
@@ -48,6 +48,11 @@ public class KiwiCountUI
      */
     public KiwiCountUI(Game game) 
     {
+        UserNameGUI ung = new UserNameGUI();
+        while(ung.getName!=true)
+        System.out.println("");
+        game.setPlayerName(ung.getPlayerName());
+        
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
         setAsGameListener();
@@ -692,4 +697,5 @@ public class KiwiCountUI
     // End of variables declaration//GEN-END:variables
 
     private Game game;
+    private String playerName;
 }
