@@ -5,8 +5,7 @@
  */
 package nz.ac.aut.ense701.gameModel;
 
-import static java.lang.Thread.State.TERMINATED;
-import java.util.ArrayList;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
