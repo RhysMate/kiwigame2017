@@ -29,14 +29,6 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="245" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
@@ -52,8 +44,16 @@
                           <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="245" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -62,9 +62,9 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="29" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Trap" linkSize="1" alignment="3" min="-2" pref="132" max="-2" attributes="0"/>
                       <Component id="Apple" linkSize="1" alignment="3" min="-2" pref="128" max="-2" attributes="0"/>
@@ -96,7 +96,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="Trap">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Trap"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/nz/ac/aut/ense701/gui/images/trap.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TrapActionPerformed"/>
@@ -104,7 +106,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="Energy_Drink">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Energy Drink"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/nz/ac/aut/ense701/gui/images/drink.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Energy_DrinkActionPerformed"/>
@@ -112,7 +116,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="Apple">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Apple"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/nz/ac/aut/ense701/gui/images/apple.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AppleActionPerformed"/>
@@ -120,7 +126,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="Screwdriver">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Screwdriver"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/nz/ac/aut/ense701/gui/images/screwdriver.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ScrewdriverActionPerformed"/>
@@ -128,7 +136,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="Sandwich">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sandwich"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/nz/ac/aut/ense701/gui/images/sandwich.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SandwichActionPerformed"/>
@@ -136,7 +146,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="Muesli_Bar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Muesli Bar"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/nz/ac/aut/ense701/gui/images/bar.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Muesli_BarActionPerformed"/>
