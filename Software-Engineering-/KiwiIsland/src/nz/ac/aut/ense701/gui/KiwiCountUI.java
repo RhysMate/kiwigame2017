@@ -50,6 +50,17 @@ public class KiwiCountUI
      */
     public KiwiCountUI(Game game) 
     {
+        // this part try to make sure the longinpage run first before the main GUI of the game
+//        LoginPageJFrame log = new LoginPageJFrame();
+//        log.setLocation(300,300); 
+//        log.setSize(500,500);
+//        log.setVisible(true);
+//        
+//        while(log.startgame == false){
+//            System.out.println();
+//        }
+        
+        
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
         setAsGameListener();
@@ -251,42 +262,45 @@ public class KiwiCountUI
         btnCollect = new javax.swing.JButton();
         btnCount = new javax.swing.JButton();
 
-        Trap.setText("Trap");
+        shop.setPreferredSize(new java.awt.Dimension(600, 500));
+        shop.setSize(new java.awt.Dimension(100, 100));
+
+        Trap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/trap.jpg"))); // NOI18N
         Trap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TrapActionPerformed(evt);
             }
         });
 
-        Energy_Drink.setText("Energy Drink");
+        Energy_Drink.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/drink.jpg"))); // NOI18N
         Energy_Drink.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Energy_DrinkActionPerformed(evt);
             }
         });
 
-        Apple.setText("Apple");
+        Apple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/apple.jpg"))); // NOI18N
         Apple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AppleActionPerformed(evt);
             }
         });
 
-        Screwdriver.setText("Screwdriver");
+        Screwdriver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/screwdriver.jpg"))); // NOI18N
         Screwdriver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ScrewdriverActionPerformed(evt);
             }
         });
 
-        Sandwich.setText("Sandwich");
+        Sandwich.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/sandwich.jpg"))); // NOI18N
         Sandwich.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SandwichActionPerformed(evt);
             }
         });
 
-        Muesli_Bar.setText("Muesli Bar");
+        Muesli_Bar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/bar.jpg"))); // NOI18N
         Muesli_Bar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Muesli_BarActionPerformed(evt);
@@ -313,6 +327,10 @@ public class KiwiCountUI
         shop.getContentPane().setLayout(shopLayout);
         shopLayout.setHorizontalGroup(
             shopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shopLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
             .addGroup(shopLayout.createSequentialGroup()
                 .addGroup(shopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(shopLayout.createSequentialGroup()
@@ -331,12 +349,6 @@ public class KiwiCountUI
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Apple, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(shopLayout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jLabel1))
-                    .addGroup(shopLayout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(shopLayout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(jLabel3)
                         .addGap(106, 106, 106)
@@ -349,8 +361,11 @@ public class KiwiCountUI
                         .addGap(85, 85, 85)
                         .addComponent(jLabel6)
                         .addGap(90, 90, 90)
-                        .addComponent(jLabel8)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addComponent(jLabel8))
+                    .addGroup(shopLayout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         shopLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Apple, Energy_Drink, Muesli_Bar, Sandwich, Screwdriver, Trap});
@@ -372,7 +387,7 @@ public class KiwiCountUI
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addGroup(shopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Screwdriver)
                     .addComponent(Sandwich)
@@ -401,7 +416,7 @@ public class KiwiCountUI
         );
         pnlIslandLayout.setVerticalGroup(
             pnlIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 618, Short.MAX_VALUE)
+            .addGap(0, 739, Short.MAX_VALUE)
         );
 
         pnlContent.add(pnlIsland, java.awt.BorderLayout.CENTER);
@@ -809,10 +824,10 @@ public class KiwiCountUI
     }//GEN-LAST:event_btnCountActionPerformed
 
     private void shopbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopbuttonActionPerformed
-        shop.setLocation(300, 300);
-        shop.setSize(500,500);
+        shop.setLocation(150, 150);
+        shop.setTitle("SHOP");
+        shop.setSize(600,500);
         shop.setVisible(true);
-        
     }//GEN-LAST:event_shopbuttonActionPerformed
 
     private void AppleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppleActionPerformed
