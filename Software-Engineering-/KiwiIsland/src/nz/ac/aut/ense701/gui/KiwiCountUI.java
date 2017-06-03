@@ -50,6 +50,17 @@ public class KiwiCountUI
      */
     public KiwiCountUI(Game game) 
     {
+        // this part try to make sure the longinpage run first before the main GUI of the game
+//        LoginPageJFrame log = new LoginPageJFrame();
+//        log.setLocation(300,300); 
+//        log.setSize(500,500);
+//        log.setVisible(true);
+//        
+//        while(log.startgame == false){
+//            System.out.println();
+//        }
+        
+        
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
         setAsGameListener();
@@ -251,6 +262,12 @@ public class KiwiCountUI
         btnCollect = new javax.swing.JButton();
         btnCount = new javax.swing.JButton();
 
+<<<<<<< HEAD
+=======
+        shop.setPreferredSize(new java.awt.Dimension(600, 500));
+        shop.setSize(new java.awt.Dimension(100, 100));
+
+>>>>>>> refs/remotes/origin/master
         Trap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/trap.jpg"))); // NOI18N
         Trap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,6 +330,10 @@ public class KiwiCountUI
         shop.getContentPane().setLayout(shopLayout);
         shopLayout.setHorizontalGroup(
             shopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shopLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
             .addGroup(shopLayout.createSequentialGroup()
                 .addGroup(shopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(shopLayout.createSequentialGroup()
@@ -345,12 +366,18 @@ public class KiwiCountUI
                         .addGap(90, 90, 90)
                         .addComponent(jLabel8))
                     .addGroup(shopLayout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(171, 171, 171)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(shopLayout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(jLabel1)))
                 .addContainerGap(42, Short.MAX_VALUE))
+=======
+                        .addGap(259, 259, 259)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> refs/remotes/origin/master
         );
 
         shopLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Apple, Energy_Drink, Muesli_Bar, Sandwich, Screwdriver, Trap});
@@ -372,7 +399,7 @@ public class KiwiCountUI
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addGroup(shopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Screwdriver)
                     .addComponent(Sandwich)
@@ -401,7 +428,7 @@ public class KiwiCountUI
         );
         pnlIslandLayout.setVerticalGroup(
             pnlIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 618, Short.MAX_VALUE)
+            .addGap(0, 739, Short.MAX_VALUE)
         );
 
         pnlContent.add(pnlIsland, java.awt.BorderLayout.CENTER);
@@ -809,10 +836,14 @@ public class KiwiCountUI
     }//GEN-LAST:event_btnCountActionPerformed
 
     private void shopbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopbuttonActionPerformed
+<<<<<<< HEAD
         shop.setLocation(300, 300);
+=======
+        shop.setLocation(150, 150);
+        shop.setTitle("SHOP");
+>>>>>>> refs/remotes/origin/master
         shop.setSize(600,500);
         shop.setVisible(true);
-        
     }//GEN-LAST:event_shopbuttonActionPerformed
 
     private void AppleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppleActionPerformed
