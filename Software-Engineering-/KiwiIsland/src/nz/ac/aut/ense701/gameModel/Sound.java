@@ -33,7 +33,7 @@ class Sound extends Thread{
         
     
     
-    public void run(){
+    public synchronized void run(){
        try {
             soundFile = new File(strFilename);
         } catch (Exception e) {

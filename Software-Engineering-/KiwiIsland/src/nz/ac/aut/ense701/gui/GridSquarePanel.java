@@ -56,6 +56,7 @@ public class GridSquarePanel extends javax.swing.JPanel
         {
             // Set the text of the JLabel according to the occupant
             lblText.setText(game.getOccupantStringRepresentation(row,column));
+            
            
             
             if (game.getOccupantName(row, column).contains("Apple")){
@@ -123,6 +124,7 @@ public class GridSquarePanel extends javax.swing.JPanel
             // set border colour according to 
             // whether the player is in the grid square or not
             setBorder(game.hasPlayer(row,column) ? activeBorder : normalBorder);
+            
         }
         else
         {

@@ -43,7 +43,7 @@ public class PlayBGMTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        PlayBGM instance = new PlayBGM();
+        PlayBGM instance = new PlayBGM("BGM1.wav");
         instance.run();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

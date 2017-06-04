@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
+import javax.swing.ImageIcon;
 
 /**
  * This is the class that knows the Kiwi Island game rules and state
@@ -40,10 +41,6 @@ public class Game
         eventListeners = new HashSet<GameEventListener>();
 
         createNewGame("IslandData.txt");
-        
-        bgm = new PlayBGM();
-        Thread th = new Thread(bgm);
-        th.start();
     }
     
     
@@ -188,6 +185,7 @@ public class Game
             sound = new Sound("woop.wav");
             sound.start();
         }
+        
         return island.getOccupants(player.getPosition());
     }
     
