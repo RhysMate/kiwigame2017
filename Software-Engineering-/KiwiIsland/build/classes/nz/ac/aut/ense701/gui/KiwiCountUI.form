@@ -172,22 +172,22 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Trap"/>
+            <Property name="text" type="java.lang.String" value="Trap: $10"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Energy Drink"/>
+            <Property name="text" type="java.lang.String" value="Energy Drink: $4"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Apple"/>
+            <Property name="text" type="java.lang.String" value="Apple: $1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sandwich"/>
+            <Property name="text" type="java.lang.String" value="Sandwich: $5"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -197,7 +197,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Muesli Bar"/>
+            <Property name="text" type="java.lang.String" value="Muesli Bar: $2"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -439,7 +439,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="txtKiwisCounted">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="&quot;0&quot;" type="code"/>
+                        </Property>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -459,7 +461,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblPlayerCoins">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Player Coins  :"/>
+                        <Property name="text" type="java.lang.String" value="Player Coins   :  $"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -469,7 +471,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="txtPlayerCoins">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="this.getPlayerCoins() + &quot;&quot;" type="code"/>
+                        </Property>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">

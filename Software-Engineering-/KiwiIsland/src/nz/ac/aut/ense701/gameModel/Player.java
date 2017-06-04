@@ -19,7 +19,6 @@ public class Player
     private final String    name;
     private final double    maxStamina;
     private double    stamina;
-    private int       coins;
     private boolean   alive;
     private Set<Item> backpack;
     private final double    maxBackpackWeight;
@@ -94,15 +93,6 @@ public class Player
     public double getStaminaLevel()
     {
        return this.stamina;
-    }
-
-    /**
-     * Get the current coins of the player.
-     * @return current coins of the player
-     */
-    public double getPlayerCoins()
-    {
-       return this.coins;
     }
 
     /**
@@ -294,32 +284,6 @@ public class Player
        if ( stamina > maxStamina )
        {
            stamina = maxStamina;
-       }
-    }
-    
-    /**
-     * Increase the coins of the player.
-     * 
-     * @param increase the amount of coins
-     */
-    public void addCoins(int increase)
-    {
-       if ( increase > 0 && isAlive() )
-       {         
-          this.coins += increase;    
-       }
-    }
-    
-    /**
-     * Increase the coins of the player.
-     * 
-     * @param increase the amount of coins
-     */
-    public void removeCoins(int increase)
-    {
-       if ( increase > 0 && isAlive() )
-       {         
-          this.coins += increase;    
        }
     }
     

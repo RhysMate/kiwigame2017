@@ -43,6 +43,7 @@ public class KiwiCountUI
             }
         });
     }
+    private int playerCoins;
     
     /**
      * Creates a GUI for the KiwiIsland game.
@@ -93,6 +94,18 @@ public class KiwiCountUI
         });
     }
     
+    public int getPlayerCoins(){
+        return playerCoins;
+    }
+    
+    public void addCoins(int increase){
+        this.playerCoins += increase;
+    }
+    
+    public void removeCoins(int decrease){
+        this.playerCoins -= decrease;
+    }
+    
     /**
      * This method is called by the game model every time something changes.
      * Trigger an update.
@@ -105,6 +118,7 @@ public class KiwiCountUI
         // check for "game over" or "game won"
         if ( game.getState() == GameState.LOST )
         {
+            int coins = this.playerCoins;
             JOptionPane.showMessageDialog(
                     this, 
                     game.getLoseMessage(), "Game over!",
@@ -113,16 +127,20 @@ public class KiwiCountUI
             if(game.fileName == "IslandData.txt") {
                 game.createNewGame("IslandData2.txt");
                 initIslandGrid();
+                this.addCoins(10 + coins);
                 update();  
             }
             else  {
                 game.createNewGame("IslandData3.txt");
                 initIslandGrid();
+                this.addCoins(10);
                 update();  
             }
         }
         else if ( game.getState() == GameState.WON )
         {
+            int coins = this.getPlayerCoins();
+            gameStateChanged();
             JOptionPane.showMessageDialog(
                     this, 
                     game.getWinMessage(), "Well Done!",
@@ -130,11 +148,13 @@ public class KiwiCountUI
             if(game.fileName == "IslandData.txt") {
                 game.createNewGame("IslandData2.txt");
                 initIslandGrid();
+                this.addCoins(10 + coins);
                 update();  
             }
             else  {
                 game.createNewGame("IslandData3.txt");
                 initIslandGrid();
+                this.addCoins(10 + coins);
                 update();  
             }
         }
@@ -169,6 +189,7 @@ public class KiwiCountUI
         // update player information
         int[] playerValues = game.getPlayerValues();
         txtPlayerName.setText(game.getPlayerName());
+        txtPlayerCoins.setText(this.getPlayerCoins() + "");
         progPlayerStamina.setMaximum(playerValues[Game.MAXSTAMINA_INDEX]);
         progPlayerStamina.setValue(playerValues[Game.STAMINA_INDEX]);
         progBackpackWeight.setMaximum(playerValues[Game.MAXWEIGHT_INDEX]);
@@ -312,17 +333,17 @@ public class KiwiCountUI
 
         jLabel2.setText("Tips: Click the images to buy the items ");
 
-        jLabel3.setText("Trap");
+        jLabel3.setText("Trap: $10");
 
-        jLabel4.setText("Energy Drink");
+        jLabel4.setText("Energy Drink: $4");
 
-        jLabel5.setText("Apple");
+        jLabel5.setText("Apple: $1");
 
-        jLabel6.setText("Sandwich");
+        jLabel6.setText("Sandwich: $5");
 
         jLabel7.setText("Screwdriver");
 
-        jLabel8.setText("Muesli Bar");
+        jLabel8.setText("Muesli Bar: $2");
 
         javax.swing.GroupLayout shopLayout = new javax.swing.GroupLayout(shop.getContentPane());
         shop.getContentPane().setLayout(shopLayout);
@@ -529,13 +550,13 @@ public class KiwiCountUI
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         pnlPlayerData.add(txtPredatorsLeft, gridBagConstraints);
 
-        lblPlayerCoins.setText("Player Coins  :");
+        lblPlayerCoins.setText("Player Coins   :  $");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         pnlPlayerData.add(lblPlayerCoins, gridBagConstraints);
 
-        txtPlayerCoins.setText("0");
+        txtPlayerCoins.setText(this.getPlayerCoins() + "");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -845,33 +866,81 @@ public class KiwiCountUI
     }//GEN-LAST:event_shopbuttonActionPerformed
 
     private void AppleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppleActionPerformed
-        game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Apple", "Restores 75 energy",0.5, 0.75, 75));
-        gameStateChanged();
+        if (this.getPlayerCoins() >= 1){
+            game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Apple", "Restores 75 energy",0.5, 0.75, 75));
+            this.removeCoins(1);
+            gameStateChanged();
+        }else{
+            JOptionPane.showMessageDialog(null,
+            "You can not afford a Apple.",
+            "Not Enough Gold",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_AppleActionPerformed
 
     private void SandwichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SandwichActionPerformed
-       game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Sandwich", "Restores 50 energy",0.5, 0.75, 50));
-       gameStateChanged();
+        if (this.getPlayerCoins() >= 5){
+            game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Sandwich", "Restores 50 energy",0.5, 0.75, 50));
+            this.removeCoins(5);
+            gameStateChanged();
+        }else{
+            JOptionPane.showMessageDialog(null,
+            "You can not afford a Sandwich.",
+            "Not Enough Gold",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_SandwichActionPerformed
 
     private void TrapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrapActionPerformed
-        game.getPlayer().collect(new Tool(game.getPlayer().getPosition(), "Trap", "", 1.0, 1.0));
-        gameStateChanged();
+        if (this.getPlayerCoins() >= 10){
+            game.getPlayer().collect(new Tool(game.getPlayer().getPosition(), "Trap", "", 1.0, 1.0));
+            this.removeCoins(10);
+            gameStateChanged();
+        }else{
+            JOptionPane.showMessageDialog(null,
+            "You can not afford a Trap.",
+            "Not Enough Gold",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_TrapActionPerformed
 
     private void Energy_DrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Energy_DrinkActionPerformed
-        game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Energy Drink","Restores you to full energy", 0.5, 0.75, 100));
-        gameStateChanged();
+        if (this.getPlayerCoins() >= 4){
+            game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Energy Drink","Restores you to full energy", 0.5, 0.75, 100));
+            this.removeCoins(4);
+            gameStateChanged();
+        }else{
+            JOptionPane.showMessageDialog(null,
+            "You can not afford a Energy Drink.",
+            "Not Enough Gold",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_Energy_DrinkActionPerformed
 
     private void Muesli_BarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Muesli_BarActionPerformed
-        game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Muesli Bar", "Restores 25 energy",0.5, 0.75, 25));
-        gameStateChanged();
+        if (this.getPlayerCoins() >= 2){
+            game.getPlayer().collect(new Food(game.getPlayer().getPosition(), "Muesli Bar", "Restores 25 energy",0.5, 0.75, 25));
+            this.removeCoins(2);
+            gameStateChanged();
+        }else{
+            JOptionPane.showMessageDialog(null,
+            "You can not afford a Muesli Bar.",
+            "Not Enough Gold",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_Muesli_BarActionPerformed
 
     private void ScrewdriverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScrewdriverActionPerformed
-       game.getPlayer().collect(new Tool(game.getPlayer().getPosition(), "Screwdriver", "", 0.5, 0.75));
-       this.repaint();
+        if (this.getPlayerCoins() >= 7){  
+            game.getPlayer().collect(new Tool(game.getPlayer().getPosition(), "Screwdriver", "", 0.5, 0.75));
+            this.removeCoins(7);
+            gameStateChanged();
+        }else{
+            JOptionPane.showMessageDialog(null,
+            "You can not afford a Screwdriver.",
+            "Not Enough Gold",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_ScrewdriverActionPerformed
     
     /**
