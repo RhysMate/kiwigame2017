@@ -15,22 +15,24 @@ import java.util.logging.Logger;
  */
 public class PlayBGM implements Runnable{
     Sound BGM;
-    boolean play = true;
+    public boolean play = true;
+    String tmp;
     
-    public PlayBGM(){
-       BGM = new Sound("BGM1"); 
+    public PlayBGM(String tmp){
+        this.tmp = tmp;
     }
     
     @Override
-    public void run() {
+    public synchronized void run() {
+        BGM = new Sound(tmp);
             while(true)
             {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                         if(play == true){
                             if(BGM.isAlive() == false)
                             {
-                                BGM = new Sound("BGM1.wav"); 
+                                BGM = new Sound(tmp); 
                                 BGM.start();
                             }
                         }if(play == false){

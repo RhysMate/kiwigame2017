@@ -50,17 +50,6 @@ public class KiwiCountUI
      */
     public KiwiCountUI(Game game) 
     {
-        // this part try to make sure the longinpage run first before the main GUI of the game
-//        LoginPageJFrame log = new LoginPageJFrame();
-//        log.setLocation(300,300); 
-//        log.setSize(500,500);
-//        log.setVisible(true);
-//        
-//        while(log.startgame == false){
-//            System.out.println();
-//        }
-        
-        
         assert game != null : "Make sure game object is created before UI";
         this.game = game;
         setAsGameListener();
@@ -349,23 +338,25 @@ public class KiwiCountUI
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Apple, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(shopLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel3)
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel4)
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel5))
-                    .addGroup(shopLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel7)
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel6)
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel8))
-                    .addGroup(shopLayout.createSequentialGroup()
                         .addGap(259, 259, 259)
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(shopLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(128, 128, 128)
+                .addComponent(jLabel5)
+                .addGap(78, 78, 78))
+            .addGroup(shopLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(120, 120, 120)
+                .addComponent(jLabel8)
+                .addGap(66, 66, 66))
         );
 
         shopLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Apple, Energy_Drink, Muesli_Bar, Sandwich, Screwdriver, Trap});
@@ -387,7 +378,7 @@ public class KiwiCountUI
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(shopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Screwdriver)
                     .addComponent(Sandwich)
