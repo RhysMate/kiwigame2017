@@ -245,6 +245,8 @@ public class KiwiCountUI
         lblKiwisCounted = new javax.swing.JLabel();
         txtKiwisCounted = new javax.swing.JLabel();
         txtPredatorsLeft = new javax.swing.JLabel();
+        lblPlayerCoins = new javax.swing.JLabel();
+        txtPlayerCoins = new javax.swing.JLabel();
         shopbutton = new javax.swing.JButton();
         javax.swing.JPanel pnlMovement = new javax.swing.JPanel();
         btnMoveNorth = new javax.swing.JButton();
@@ -262,7 +264,6 @@ public class KiwiCountUI
         btnCollect = new javax.swing.JButton();
         btnCount = new javax.swing.JButton();
 
-        shop.setPreferredSize(new java.awt.Dimension(600, 500));
         shop.setSize(new java.awt.Dimension(100, 100));
 
         Trap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nz/ac/aut/ense701/gui/images/trap.jpg"))); // NOI18N
@@ -528,6 +529,19 @@ public class KiwiCountUI
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         pnlPlayerData.add(txtPredatorsLeft, gridBagConstraints);
 
+        lblPlayerCoins.setText("Player Coins  :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        pnlPlayerData.add(lblPlayerCoins, gridBagConstraints);
+
+        txtPlayerCoins.setText("0");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        pnlPlayerData.add(txtPlayerCoins, gridBagConstraints);
+
         pnlPlayer.add(pnlPlayerData, java.awt.BorderLayout.WEST);
 
         shopbutton.setText("Shop");
@@ -549,7 +563,7 @@ public class KiwiCountUI
         pnlMovement.setBorder(javax.swing.BorderFactory.createTitledBorder("Movement"));
         pnlMovement.setLayout(new java.awt.GridBagLayout());
 
-        btnMoveNorth.setText("N");
+        btnMoveNorth.setText("North [W]");
         btnMoveNorth.setFocusable(false);
         btnMoveNorth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -565,7 +579,7 @@ public class KiwiCountUI
         gridBagConstraints.weighty = 1.0;
         pnlMovement.add(btnMoveNorth, gridBagConstraints);
 
-        btnMoveSouth.setText("S");
+        btnMoveSouth.setText("South [S]");
         btnMoveSouth.setFocusable(false);
         btnMoveSouth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -581,7 +595,7 @@ public class KiwiCountUI
         gridBagConstraints.weighty = 1.0;
         pnlMovement.add(btnMoveSouth, gridBagConstraints);
 
-        btnMoveEast.setText("E");
+        btnMoveEast.setText("East [D]");
         btnMoveEast.setFocusable(false);
         btnMoveEast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -597,7 +611,7 @@ public class KiwiCountUI
         gridBagConstraints.weighty = 1.0;
         pnlMovement.add(btnMoveEast, gridBagConstraints);
 
-        btnMoveWest.setText("W");
+        btnMoveWest.setText("West [A]");
         btnMoveWest.setFocusable(false);
         btnMoveWest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -648,7 +662,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlInventory.add(scrlInventory, gridBagConstraints);
 
-        btnDrop.setText("Drop");
+        btnDrop.setText("Drop [M]");
         btnDrop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDropActionPerformed(evt);
@@ -664,7 +678,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlInventory.add(btnDrop, gridBagConstraints);
 
-        btnUse.setText("Use");
+        btnUse.setText("Use [V]");
         btnUse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUseActionPerformed(evt);
@@ -719,7 +733,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlObjects.add(scrlObjects, gridBagConstraints);
 
-        btnCollect.setText("Collect");
+        btnCollect.setText("Collect [B]");
         btnCollect.setToolTipText("");
         btnCollect.setMaximumSize(new java.awt.Dimension(61, 23));
         btnCollect.setMinimumSize(new java.awt.Dimension(61, 23));
@@ -739,7 +753,7 @@ public class KiwiCountUI
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         pnlObjects.add(btnCollect, gridBagConstraints);
 
-        btnCount.setText("Count");
+        btnCount.setText("Count [N]");
         btnCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCountActionPerformed(evt);
@@ -907,6 +921,7 @@ public class KiwiCountUI
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblKiwisCounted;
+    private javax.swing.JLabel lblPlayerCoins;
     private javax.swing.JLabel lblPredators;
     private javax.swing.JList listInventory;
     private javax.swing.JList listObjects;
@@ -917,6 +932,7 @@ public class KiwiCountUI
     private javax.swing.JFrame shop;
     private javax.swing.JButton shopbutton;
     private javax.swing.JLabel txtKiwisCounted;
+    private javax.swing.JLabel txtPlayerCoins;
     private javax.swing.JLabel txtPlayerName;
     private javax.swing.JLabel txtPredatorsLeft;
     // End of variables declaration//GEN-END:variables
